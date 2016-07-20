@@ -1,0 +1,21 @@
+{
+  "name": "white-frame/helloquent",
+  "description": "Repositories, Presenters and Model tools above eloquent in a all in one package",
+  "license": "WTFPL",
+  "authors": [
+    {
+      "name": "Anael Favre",
+      "email": "anael.favre@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "WhiteFrame\\Helloquent\\": "src/"
+    }
+  },
+  "require": {
+    "illuminate/support": "5.2.*",
+    "laracasts/presenter": "0.2.*",
+    "white-frame/white-frame": "5.2.*"
+  }
+}

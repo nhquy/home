@@ -1,0 +1,25 @@
+{
+  "name": "white-frame/dynatable",
+  "description": "Very simple server-side Dynatable handler for Laravel 5",
+  "keywords": [
+    "laravel",
+    "dynatable"
+  ],
+  "license": "WTFPL",
+  "authors": [
+    {
+      "name": "Anael Favre",
+      "email": "anael.favre@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.5.9",
+    "illuminate/support": "5.2.*",
+    "white-frame/white-frame": "5.2.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "WhiteFrame\\Dynatable\\": "src"
+    }
+  }
+}

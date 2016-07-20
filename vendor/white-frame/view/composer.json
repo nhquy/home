@@ -1,0 +1,20 @@
+{
+  "name": "white-frame/view",
+  "description": "Set of tools for enhancing Laravel blade view management",
+  "license": "WTFPL",
+  "authors": [
+    {
+      "name": "Anael Favre",
+      "email": "anael.favre@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "WhiteFrame\\View\\": "src/"
+    }
+  },
+  "require": {
+    "illuminate/support": "5.2.*",
+    "white-frame/white-frame": "5.2.*"
+  }
+}

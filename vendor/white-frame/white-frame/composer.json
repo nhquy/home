@@ -1,0 +1,26 @@
+{
+  "name": "white-frame/white-frame",
+  "description": "Main repository for white frame implementation",
+  "license": "WTFPL",
+  "authors": [
+    {
+      "name": "Anael Favre",
+      "email": "anael.favre@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "WhiteFrame\\WhiteFrame\\": "src/"
+    }
+  },
+  "require": {
+    "php": ">=5.5.9",
+    "illuminate/support": "5.2.*",
+    "pingpong/widget" : "~2.0",
+    "white-frame/statistics": "5.2.*",
+    "white-frame/helloquent": "5.2.*",
+    "white-frame/view": "5.2.*",
+    "white-frame/http": "5.2.*",
+    "white-frame/dynatable": "5.2.*"
+  }
+}
