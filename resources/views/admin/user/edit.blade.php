@@ -46,7 +46,10 @@
 	                  </div>
 
 	                  <div class="x_content">
-						    {!! Form::open(array('url' => url('admin/'.$type.'/store'), 'method' => 'put', 'class' => 'form-horizontal form-label-left', 'files'=> true)) !!}
+						    <!-- {!! Form::open(array('url' => url('admin/'.$type.'/store'), 'method' => 'put', 'class' => 'form-horizontal form-label-left', 'files'=> true)) !!}
+                              -->
+                              {!! Form::model($user, array('url' => url('admin/user') . '/' . $user->id, 'method' => 'put','id'=>'fupload', 'class' => 'form-horizontal form-label-left', 'files'=> true)) !!}
+                              
                               <span class="section">Personal Info</span>
                               <div class="item form-group {{ $errors->has('name') ? 'bad' : '' }}">
                               	{!! Form::label('name', trans("admin/users.name"), array('class' => 'control-label col-md-3 col-sm-3 col-xs-12')) !!}

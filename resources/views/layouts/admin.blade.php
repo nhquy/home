@@ -61,7 +61,7 @@
                   		Home <span class="fa fa-chevron-down"></span>
                   	</a>
                     <ul class="nav child_menu">
-                      <li><a href="{{ url('/admin') }}">Dashboard</a></li>
+                      <li><a href="{{ url('/admin/') }}">Dashboard</a></li>
                       <!-- <li><a href="index2.html">Dashboard2</a></li>
                       <li><a href="index3.html">Dashboard3</a></li>-->
                     </ul>
@@ -72,7 +72,7 @@
                   		<span class="fa fa-chevron-down"></span>
                   	</a>
                     <ul class="nav child_menu">
-                      <li><a href="{{ url('/admin/user') }}">Users Manager</a></li>
+                      <li><a href="{{ url('/admin/user/') }}">Users Manager</a></li>
                       <!-- <li><a href="form_advanced.html">Advanced Components</a></li>
                       <li><a href="form_validation.html">Form Validation</a></li>
                       <li><a href="form_wizards.html">Form Wizard</a></li>

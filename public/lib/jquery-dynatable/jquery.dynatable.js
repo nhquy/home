@@ -288,7 +288,7 @@
   //Function custom 
   function createAction(id, uuid){
 	  var view, edit, del, html;
-	  view = "<a class='btn btn-primary btn-xs' data-uuid='"+uuid+"' href='"+id+"/view'><i class='fa fa-folder'></i> View </a>";
+	  view = "<a class='btn btn-primary btn-xs' data-uuid='"+uuid+"' href='/"+id+"/view'><i class='fa fa-folder'></i> View </a>";
 	  edit = "<a class='btn btn-info btn-xs' href='"+id+"/edit/'><i class='fa fa-pencil'></i> Edit </a>";
 	  del = "<a class='btn btn-danger btn-xs' href='"+id+"/delete'><i class='fa fa-trash-o'></i> Delete </a>";
 	  html = view+edit+del;

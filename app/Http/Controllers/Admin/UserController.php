@@ -11,6 +11,7 @@ use WhiteFrame\Dynatable\Dynatable;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use Faker\Provider\Uuid;
+use App\Http\Requests\Admin\UserRequest;
 
 class UserController extends Controller
 {
@@ -93,9 +94,13 @@ class UserController extends Controller
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function update(Request $request, $id)
+	public function update(UserRequest $request, User $user)
 	{
 		//
+		$password = $request->password;
+		$passwordConfirmation = $request->password_confirmation;
+		echo $request->password;
+		exit();
 	}
 	
 	/**

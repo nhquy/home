@@ -11,6 +11,13 @@
 |
 */
 
+/****************   Model binding into route **************************/
+Route::model('user', 'App\User');
+Route::model('user', 'App\User');
+Route::pattern('id', '[0-9]+');
+Route::pattern('slug', '[0-9a-z-_]+');
+Route::pattern('uuid', '[0-9a-z-_]+');
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -25,10 +32,17 @@ Route::group(['namespace' => 'Admin', /*'middleware' => ['auth'], */'prefix' => 
 	# Users
 	Route::get('user/data', 'UserController@data');
 
+	# Users
+	Route::get('user/data', 'UserController@data');
+	Route::get('user/{user}/show', 'UserController@show');
+	Route::get('user/{user}/edit', 'UserController@edit');
+	Route::get('user/{user}/delete', 'UserController@delete');
+	Route::resource('user', 'UserController');
+	
 	//Route::get('user/{user}/show', 'UserController@show');
-	Route::resource('user', 'UserController', ['parameters' => [
+	/*Route::resource('user', 'UserController', ['parameters' => [
     	'user' => 'uuid'
-	]]);
+	]]);*/
 	//Route::post('user/store', 'UserController@store');
 });
 
