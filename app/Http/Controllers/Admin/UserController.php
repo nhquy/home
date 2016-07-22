@@ -99,8 +99,15 @@ class UserController extends Controller
 		//
 		$password = $request->password;
 		$passwordConfirmation = $request->password_confirmation;
-		echo $request->password;
-		exit();
+
+		if (!empty($password)) {
+			if ($password === $passwordConfirmation) {
+				$user->password = bcrypt($password);
+			}
+		}
+		$request->request->add(['uuid'=>Uuid::uuid()]);
+		$user->update($request->except('password','password_confirmation'));
+		return redirect("/admin/user");
 	}
 	
 	/**
@@ -109,9 +116,30 @@ class UserController extends Controller
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function destroy($id)
+	/*public function destroy($id)
 	{
 		//
+	}*/
+	/**
+	 * Remove the specified resource from storage.
+	 *
+	 * @param $user
+	 * @return Response
+	 */
+	
+	public function delete(User $user)
+	{
+		return view('admin.user.delete', compact('user'));
+	}
+	/**
+	 * Remove the specified resource from storage.
+	 *
+	 * @param $user
+	 * @return Response
+	 */
+	public function destroy(User $user)
+	{
+		$user->delete();
 	}
 	/**
 	 * Get a validator for an incoming registration request.
@@ -128,6 +156,11 @@ class UserController extends Controller
 				'password' => 'required|min:6|confirmed',
 		]);
 	}*/
+	/**
+	 * Show a list of all the languages posts formatted for Dynatable.
+	 *
+	 * @return Dynatable JSON
+	 */
 	public function data(Request $request)
 	{
 		// Get fluent collection of what you want to show in dynatable

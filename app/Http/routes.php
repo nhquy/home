@@ -13,7 +13,7 @@
 
 /****************   Model binding into route **************************/
 Route::model('user', 'App\User');
-Route::model('user', 'App\User');
+Route::model('usergroup', 'App\UserGroup');
 Route::pattern('id', '[0-9]+');
 Route::pattern('slug', '[0-9a-z-_]+');
 Route::pattern('uuid', '[0-9a-z-_]+');
@@ -29,8 +29,6 @@ Route::group(['namespace' => 'Admin', /*'middleware' => ['auth'], */'prefix' => 
 	});
 
 	//Route::get('/', array('as' => 'admin', 'uses' => 'LoginController@index'));
-	# Users
-	Route::get('user/data', 'UserController@data');
 
 	# Users
 	Route::get('user/data', 'UserController@data');
@@ -38,7 +36,14 @@ Route::group(['namespace' => 'Admin', /*'middleware' => ['auth'], */'prefix' => 
 	Route::get('user/{user}/edit', 'UserController@edit');
 	Route::get('user/{user}/delete', 'UserController@delete');
 	Route::resource('user', 'UserController');
-	
+
+	# User Groups
+	Route::get('usergroup/data', 'UserGroupController@data');
+	Route::get('usergroup/{usergroup}/show', 'UserGroupController@show');
+	Route::get('usergroup/{usergroup}/edit', 'UserGroupController@edit');
+	Route::get('usergroup/{usergroup}/delete', 'UserGroupController@delete');
+	Route::resource('usergroup', 'UserGroupController');
+
 	//Route::get('user/{user}/show', 'UserController@show');
 	/*Route::resource('user', 'UserController', ['parameters' => [
     	'user' => 'uuid'
