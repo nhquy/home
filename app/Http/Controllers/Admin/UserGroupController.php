@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
 use App\UserGroup;
+use Illuminate\Http\Request;
+use Faker\Provider\Uuid;
 use WhiteFrame\Dynatable\Dynatable;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\UserGroupRequest;
 class UserGroupController extends Controller
 {
-    //
 	//
 	public function __construct()
 	{
@@ -35,6 +35,56 @@ class UserGroupController extends Controller
 	public function create()
 	{
 		return view('admin.usergroup.create');
+	}
+	/**
+	 * Show the form for editing the specified resource.
+	 *
+	 * @param $userGroup
+	 * @return Response
+	 */
+	public function edit(UserGroup $userGroup)
+	{
+		return view('admin.usergroup.edit', compact('userGroup'));
+	}
+	/**
+	 * Store a newly created resource in storage.
+	 *
+	 * @return Response
+	 */
+	public function store(Request $request)
+	{
+		/*$user =  User::create([
+		 'name' => $request['name'],
+		 'email' => $request['email'],
+		 'password' => bcrypt($request['password']),
+		]);*/
+		/*$request->merge(['password' => bcrypt($request->password)]);
+		$request->merge(['password_confirmation' => bcrypt($request->password_confirmation)]);*/
+		$request->request->add(['uuid'=>Uuid::uuid()]);
+		//var_dump($request->all());
+		//exit();
+		//$request->merge(['uuid' => Uuid::uuid()]);
+		$usergroup = UserGroup::create($request->all());
+		$usergroup->save();
+		//$this->vseralidator($request);
+		//$user = new User ($request->except('password','password_confirmation'));
+		//$user->password = bcrypt($request->password);
+		//$user->confirmation_code = str_random(32);
+		//$user->save();
+		return redirect("/admin/usergroup");
+	}
+	/**
+	 * Update the specified resource in storage.
+	 *
+	 * @param  \Illuminate\Http\Request  $request
+	 * @param  int  $id
+	 * @return \Illuminate\Http\Response
+	 */
+	public function update(UserGroupRequest $request, UserGroup $userGroup)
+	{
+		$request->request->add(['uuid'=>Uuid::uuid()]);
+		$userGroup->update($request->all());
+		return redirect("/admin/usergroup");
 	}
 	/**
 	 * Show a list of all the languages posts formatted for Dynatable.

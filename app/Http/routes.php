@@ -42,6 +42,7 @@ Route::group(['namespace' => 'Admin', /*'middleware' => ['auth'], */'prefix' => 
 	Route::get('usergroup/{usergroup}/show', 'UserGroupController@show');
 	Route::get('usergroup/{usergroup}/edit', 'UserGroupController@edit');
 	Route::get('usergroup/{usergroup}/delete', 'UserGroupController@delete');
+	//Route::post('usergroup/{usergroup}/store', 'UserGroupController@store');
 	Route::resource('usergroup', 'UserGroupController');
 
 	//Route::get('user/{user}/show', 'UserController@show');

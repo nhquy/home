@@ -1,7 +1,6 @@
 @extends('layouts.admin')
 
 @section('content')
-
 		<!-- page content -->
         <div class="right_col" role="main">
           <div class="">
@@ -46,45 +45,19 @@
 	                  </div>
 
 	                  <div class="x_content">
-						    <!-- {!! Form::open(array('url' => url('admin/'.$type.'/store'), 'method' => 'put', 'class' => 'form-horizontal form-label-left', 'files'=> true)) !!}
-                              -->
-                              {!! Form::model($user, array('url' => url('admin/user') . '/' . $user->id, 'method' => 'put','id'=>'fupload', 'class' => 'form-horizontal form-label-left', 'files'=> true)) !!}
-                              
-                              <span class="section">Personal Info</span>
-                              <div class="item form-group {{ $errors->has('name') ? 'bad' : '' }}">
+                      {!! Form::model($userGroup, array('url' => url('admin/usergroup') . '/' . $userGroup->id, 'method' => 'put','id'=>'fupload', 'class' => 'form-horizontal form-label-left', 'files'=> true)) !!}
+                        <span class="section">User Group Info</span>
+                              <div class="item form-group">
                               	{!! Form::label('name', trans("admin/users.name"), array('class' => 'control-label col-md-3 col-sm-3 col-xs-12')) !!}
                               	<div class="col-md-6 col-sm-6 col-xs-12">
                               	{!! Form::text('name', null, array('class' => 'form-control col-md-7 col-xs-12', 'required'=>'required')) !!}
                               	</div>
-                              	<div class="alert">{{ $errors->first('name', ':message') }}</div>
                               </div>
-                              <div class="item form-group {{ $errors->has('username') ? 'bad' : '' }}">
-                              	{!! Form::label('username', trans("admin/users.username"), array('class' => 'control-label col-md-3 col-sm-3 col-xs-12')) !!}
+                              <div class="item form-group">
+                              	{!! Form::label('handle', trans("admin/users.handle"), array('class' => 'control-label col-md-3 col-sm-3 col-xs-12')) !!}
                               	<div class="col-md-6 col-sm-6 col-xs-12">
-                              	{!! Form::text('username', null, array('class' => 'form-control col-md-7 col-xs-12', 'required'=>'required')) !!}
+                              	{!! Form::text('handle', null, array('class' => 'form-control col-md-7 col-xs-12', 'required'=>'required')) !!}
                               	</div>
-                              	<div class="alert">{{ $errors->first('username', ':message') }}</div>
-                              </div>
-                              <div class="item form-group {{ $errors->has('email') ? 'bad' : '' }}">
-                              	{!! Form::label('email', trans("admin/users.email"), array('class' => 'control-label col-md-3 col-sm-3 col-xs-12')) !!}
-                              	<div class="col-md-6 col-sm-6 col-xs-12">
-                              	{!! Form::text('email', null, array('class' => 'form-control col-md-7 col-xs-12', 'required'=>'required')) !!}
-                              	</div>
-                              	<div class="alert">{{ $errors->first('email', ':message') }}</div>
-                              </div>
-                              <div class="item form-group {{ $errors->has('password') ? 'bad' : '' }}">
-                              	{!! Form::label('password', trans("admin/users.password"), array('class' => 'control-label col-md-3 col-sm-3 col-xs-12')) !!}
-                              	<div class="col-md-6 col-sm-6 col-xs-12">
-                              	{!! Form::password('password', array('class' => 'form-control col-md-7 col-xs-12', 'required'=>'required')) !!}
-                              	</div>
-                              	<div class="alert">{{ $errors->first('password', ':message') }}</div>
-                              </div>
-                              <div class="item form-group {{ $errors->has('password_confirmation') ? 'bad' : '' }}">
-                              	{!! Form::label('password_confirmation', trans("admin/users.password_confirmation"), array('class' => 'control-label col-md-3 col-sm-3 col-xs-12')) !!}
-                              	<div class="col-md-6 col-sm-6 col-xs-12">
-                              	{!! Form::password('password_confirmation', array('class' => 'form-control col-md-7 col-xs-12', 'required'=>'required')) !!}
-                              	</div>
-                              	<div class="alert">{{ $errors->first('password_confirmation', ':message') }}</div>
                               </div>
                               <div class="ln_solid"></div>
 		                      <div class="form-group">

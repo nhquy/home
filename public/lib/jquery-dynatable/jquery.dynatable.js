@@ -285,17 +285,17 @@
     this.$element.trigger('dynatable:afterProcess', data);
   };
 
-  //Function custom 
+  //Function custom
   function createAction(id, uuid){
 	  var view, edit, del, html;
 	  view = "<a class='btn btn-primary btn-xs' data-uuid='"+uuid+"' href='/"+id+"/view'><i class='fa fa-folder'></i> View </a>";
 	  edit = "<a class='btn btn-info btn-xs' href='"+id+"/edit/'><i class='fa fa-pencil'></i> Edit </a>";
 	  del = "<a class='btn btn-danger btn-xs' href='"+id+"/delete'><i class='fa fa-trash-o'></i> Delete </a>";
 	  html = view+edit+del;
-	  return html; 
+	  return html;
   }
-  //End function custom 
-  
+  //End function custom
+
   function defaultRowWriter(rowIndex, record, columns, cellWriter) {
     var tr = '';
 
@@ -311,7 +311,7 @@
 	  console.log(record.uuid);
     var html = column.attributeWriter(record),
         td = '<td';
-    //Custom 
+    //Custom
     if(column.id=="createdAt"){
   	  //console.log("createdAt ", record.created_at.date);
   	  html = record.created_at.date;
@@ -322,9 +322,9 @@
     }
     if(column.id=="action"){
   	 // console.log("show action ");
-  	  html = createAction(record.id, record.uuid);
+  	  //html = createAction(record.id, record.uuid);
     }
-    //End Custom 
+    //End Custom
     if (column.hidden || column.textAlign) {
       td += ' style="';
 
@@ -348,7 +348,7 @@
     return td + '>' + html + '</td>';
   };
 
-  
+
   function defaultAttributeWriter(record) {
     // `this` is the column object in settings.columns
     // TODO: automatically convert common types, such as arrays and objects, to string

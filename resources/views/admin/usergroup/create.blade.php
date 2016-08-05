@@ -45,7 +45,7 @@
 	                  </div>
 
 	                  <div class="x_content">
-						    {!! Form::open(array('url' => url('admin/'.$type.'/store'), 'method' => 'post', 'class' => 'form-horizontal form-label-left', 'files'=> true)) !!}
+						    {!! Form::open(array('url' => url('admin/'.$type), 'method' => 'POST', 'class' => 'form-horizontal form-label-left', 'files'=> true)) !!}
                               <span class="section">User Group Info</span>
                               <div class="item form-group">
                               	{!! Form::label('name', trans("admin/users.name"), array('class' => 'control-label col-md-3 col-sm-3 col-xs-12')) !!}

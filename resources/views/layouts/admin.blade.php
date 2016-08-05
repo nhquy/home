@@ -8,7 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
     <title>Admin Manager</title>
-    
+    <!-- jQuery -->
+    <script src="{{ asset('js/jquery-2.2.4.js') }}"></script>
     <!-- Bootstrap -->
     <link href="{{ asset('lib/bootstrap-3.3.6/css/bootstrap.min.css') }}" rel="stylesheet">
     <!-- Font Awesome -->
@@ -17,8 +18,9 @@
     <link href="{{ asset('lib/nprogress/nprogress.css') }}" rel="stylesheet">
     <!-- jQuery Dynatable -->
     <link href="{{ asset('lib/jquery-dynatable/jquery.dynatable.css') }}" rel="stylesheet">
-    
-    
+     <!-- jQuery Dynatable -->
+    <script src="{{ asset('lib/jquery-dynatable/jquery.dynatable.js') }}"></script>
+
     <!-- Custom Theme Style -->
     <link href="{{ asset('css/admin/style.css') }}" rel="stylesheet">
 </head>
@@ -29,7 +31,7 @@
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
               <a href="index.html" class="site_title">
-              	<i class="fa fa-paw"></i> 
+              	<i class="fa fa-paw"></i>
               	<span>Gentellela Alela!</span>
               </a>
             </div>
@@ -57,7 +59,7 @@
                 <ul class="nav side-menu">
                   <li>
                   	<a>
-                  		<i class="fa fa-home"></i> 
+                  		<i class="fa fa-home"></i>
                   		Home <span class="fa fa-chevron-down"></span>
                   	</a>
                     <ul class="nav child_menu">
@@ -68,7 +70,7 @@
                   </li>
                   <li>
                   	<a>
-                  		<i class="fa fa-edit"></i> Users 
+                  		<i class="fa fa-edit"></i> Users
                   		<span class="fa fa-chevron-down"></span>
                   	</a>
                     <ul class="nav child_menu">
@@ -77,7 +79,7 @@
                   </li>
                   <li>
                   	<a>
-                  		<i class="fa fa-edit"></i> User Groups 
+                  		<i class="fa fa-edit"></i> User Groups
                   		<span class="fa fa-chevron-down"></span>
                   	</a>
                     <ul class="nav child_menu">
@@ -86,7 +88,7 @@
                   </li>
                   <li>
                   	<a>
-                  		<i class="fa fa-desktop"></i> UI Elements 
+                  		<i class="fa fa-desktop"></i> UI Elements
                   		<span class="fa fa-chevron-down"></span>
                   	</a>
                     <ul class="nav child_menu">
@@ -103,7 +105,7 @@
                   </li>
                   <li>
                   	<a>
-                  		<i class="fa fa-table"></i> Tables 
+                  		<i class="fa fa-table"></i> Tables
                   		<span class="fa fa-chevron-down"></span>
                   	</a>
                     <ul class="nav child_menu">
@@ -113,7 +115,7 @@
                   </li>
                   <li>
                   	<a>
-                  		<i class="fa fa-bar-chart-o"></i> Data Presentation 
+                  		<i class="fa fa-bar-chart-o"></i> Data Presentation
                   		<span class="fa fa-chevron-down"></span>
                   	</a>
                     <ul class="nav child_menu">
@@ -126,7 +128,7 @@
                   </li>
                   <li>
                   	<a>
-                  		<i class="fa fa-clone"></i>Layouts 
+                  		<i class="fa fa-clone"></i>Layouts
                   		<span class="fa fa-chevron-down"></span>
                   	</a>
                     <ul class="nav child_menu">
@@ -271,20 +273,93 @@
         <!-- /footer content -->
       </div>
     </div>
-	
+
 </body>
-	<!-- jQuery -->
-    <script src="{{ asset('js/jquery-2.2.4.js') }}"></script>
+
     <!-- Bootstrap -->
     <script src="{{ asset('lib/bootstrap-3.3.6/js/bootstrap.min.js') }}"></script>
     <!-- NProgress -->
     <script src="{{ asset('lib/nprogress/nprogress.js') }}"></script>
-    <!-- jQuery Dynatable -->
-    <script src="{{ asset('lib/jquery-dynatable/jquery.dynatable.js') }}"></script>
+
     <!-- Custom Theme Scripts -->
     <script src="{{ asset('js/admin/main.js') }}"></script>
     <script>
-    	$table = $('#table-main').dynatable({
+      $(document).ready(function(){
+        $('#table-main').dynatable({
+          table: {
+            bodyRowSelector: 'li'
+          },
+          dataset: {
+      	    ajax: true,
+      	    ajaxUrl: '{{ url('admin/'.$type.'/data') }}',
+      	    ajaxOnLoad: true,
+      	    records: []
+      	  },
+          writers: {
+            _rowWriter: DefaultRowWriter,
+            _cellWriter: DefaultCellWriter
+          },
+        });
+      });
+      function createAction(id, uuid){
+        var view, edit, del, html;
+        view = "<a class='btn btn-primary btn-xs' data-uuid='{!!$type!!}' href='{!!$type!!}/"+id+"/view'><i class='fa fa-folder'></i> View </a>";
+        edit = "<a class='btn btn-info btn-xs' href='{!!$type!!}/"+id+"/edit/'><i class='fa fa-pencil'></i> Edit </a>";
+        del = "<a class='btn btn-danger btn-xs' href='{!!$type!!}/"+id+"/delete'><i class='fa fa-trash-o'></i> Delete </a>";
+        html = view+edit+del;
+        return html;
+      };
+      function DefaultRowWriter(rowIndex, record, columns, cellWriter) {
+        var tr = '';
+
+        // grab the record's attribute for each column
+        for (var i = 0, len = columns.length; i < len; i++) {
+          tr += cellWriter(columns[i], record);
+        }
+
+        return '<tr>' + tr + '</tr>';
+      }
+      function DefaultCellWriter(column, record) {
+    	  var html = column.attributeWriter(record),
+            td = '<td';
+        //Custom
+        if(column.id=="createdAt"){
+      	  //console.log("createdAt ", record.created_at.date);
+      	  html = record.created_at.date;
+      	}
+        if(column.id=="updatedAt"){
+        	//  console.log("updatedAt ", record.updated_at.date);
+        	  html = record.updated_at.date;
+        }
+        if(column.id=="action"){
+      	 // console.log("show action ");
+      	  html = createAction(record.id, record.uuid);
+        }
+        //End Custom
+        if (column.hidden || column.textAlign) {
+          td += ' style="';
+
+          // keep cells for hidden column headers hidden
+          if (column.hidden) {
+            td += 'display: none;';
+          }
+
+          // keep cells aligned as their column headers are aligned
+          if (column.textAlign) {
+            td += 'text-align: ' + column.textAlign + ';';
+          }
+
+          td += '"';
+        }
+
+        if (column.cssClass) {
+          td += ' class="' + column.cssClass + '"';
+        }
+
+        console.log(td + '>' + html + '</td>');
+        return td + '>' + html + '</td>';
+      };
+    	/*$table = $('#table-main1').dynatable({
     	  dataset: {
     	    ajax: true,
     	    ajaxUrl: '{{ url('admin/'.$type.'/data') }}',
@@ -326,8 +401,8 @@
         	 // }else{
     	      	tr += cellWriter(columns[i], record);
     	     // }
-    	    } 
+    	    }
     	    return '<tr>' + tr + '</tr>';
-    	}
+    	}*/
     </script>
 </html>
