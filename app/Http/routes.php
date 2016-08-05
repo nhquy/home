@@ -16,6 +16,8 @@ Route::model('user', 'App\User');
 Route::model('usergroup', 'App\UserGroup');
 Route::model('systemsettings', 'App\SystemSettings');
 Route::model('userpermissions', 'App\UserPermissions');
+Route::model('content', 'App\Content');
+Route::model('locales', 'App\Locales');
 Route::pattern('id', '[0-9]+');
 Route::pattern('slug', '[0-9a-z-_]+');
 Route::pattern('uuid', '[0-9a-z-_]+');
@@ -60,6 +62,20 @@ Route::group(['namespace' => 'Admin', /*'middleware' => ['auth'], */'prefix' => 
 	Route::get('userpermissions/{userpermissions}/edit', 'UserPermissionsController@edit');
 	Route::get('userpermissions/{userpermissions}/delete', 'UserPermissionsController@delete');
 	Route::resource('userpermissions', 'UserPermissionsController');
+	
+	# Locales
+	Route::get('locales/data', 'LocalesControler@data');
+	Route::get('locales/{locales}/show', 'LocalesControler@show');
+	Route::get('locales/{locales}/edit', 'LocalesControler@edit');
+	Route::get('locales/{locales}/delete', 'LocalesControler@delete');
+	Route::resource('locales', 'LocalesControler');
+	
+	# Contents
+	Route::get('content/data', 'ContentController@data');
+	Route::get('content/{content}/show', 'ContentController@show');
+	Route::get('content/{content}/edit', 'ContentController@edit');
+	Route::get('content/{content}/delete', 'ContentController@delete');
+	Route::resource('content', 'ContentController');
 
 	//Route::get('user/{user}/show', 'UserController@show');
 	/*Route::resource('user', 'UserController', ['parameters' => [

@@ -14,6 +14,7 @@ class CreateLocalesTable extends Migration
     {
         Schema::create('locales', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('name', 255)->unique();
             $table->char('locale', 15)->unique();
             $table->uuid('uuid')->index();
             $table->smallInteger("sort_order");

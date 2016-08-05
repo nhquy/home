@@ -97,6 +97,24 @@
                   </li>
                   <li>
                   	<a>
+                  		<i class="fa fa-users"></i> Locales
+                  		<span class="fa fa-chevron-down"></span>
+                  	</a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{ url('/admin/locales/') }}">Locales Manager</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                  	<a>
+                  		<i class="fa fa-users"></i> Content
+                  		<span class="fa fa-chevron-down"></span>
+                  	</a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{ url('/admin/content/') }}">Content Manager</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                  	<a>
                   		<i class="fa fa-wrench"></i> System Settings
                   		<span class="fa fa-chevron-down"></span>
                   	</a>
