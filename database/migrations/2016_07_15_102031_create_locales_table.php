@@ -13,7 +13,7 @@ class CreateLocalesTable extends Migration
     public function up()
     {
         Schema::create('locales', function (Blueprint $table) {
-            //$table->bigIncrements('id');
+            $table->bigIncrements('id');
             $table->char('locale', 15)->unique();
             $table->uuid('uuid')->index();
             $table->smallInteger("sort_order");

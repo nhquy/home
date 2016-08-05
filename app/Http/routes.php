@@ -15,6 +15,7 @@
 Route::model('user', 'App\User');
 Route::model('usergroup', 'App\UserGroup');
 Route::model('systemsettings', 'App\SystemSettings');
+Route::model('userpermissions', 'App\UserPermissions');
 Route::pattern('id', '[0-9]+');
 Route::pattern('slug', '[0-9a-z-_]+');
 Route::pattern('uuid', '[0-9a-z-_]+');
@@ -52,6 +53,13 @@ Route::group(['namespace' => 'Admin', /*'middleware' => ['auth'], */'prefix' => 
 	Route::get('systemsettings/{systemsettings}/edit', 'SystemSettingsController@edit');
 	Route::get('systemsettings/{systemsettings}/delete', 'SystemSettingsController@delete');
 	Route::resource('systemsettings', 'SystemSettingsController');
+	
+	# User Permissions 
+	Route::get('userpermissions/data', 'UserPermissionsController@data');
+	Route::get('userpermissions/{userpermissions}/show', 'UserPermissionsController@show');
+	Route::get('userpermissions/{userpermissions}/edit', 'UserPermissionsController@edit');
+	Route::get('userpermissions/{userpermissions}/delete', 'UserPermissionsController@delete');
+	Route::resource('userpermissions', 'UserPermissionsController');
 
 	//Route::get('user/{user}/show', 'UserController@show');
 	/*Route::resource('user', 'UserController', ['parameters' => [
