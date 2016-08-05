@@ -6,7 +6,7 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>User Groups Manager</h3>
+                <h3>System Settings Manager</h3>
               </div>
               <div class="title_right">
                 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
@@ -45,18 +45,18 @@
 	                  </div>
 
 	                  <div class="x_content">
-						    {!! Form::open(array('url' => url('admin/'.$type), 'method' => 'POST', 'class' => 'form-horizontal form-label-left', 'files'=> true)) !!}
-                              <span class="section">User Group Info</span>
+						   {!! Form::model($systemSettings, array('url' => url('admin/'.$type) . '/' . $systemSettings->id, 'method' => 'put','id'=>'fupload', 'class' => 'form-horizontal form-label-left', 'files'=> true)) !!}
+                        	<span class="section">System Settings Info</span>
                               <div class="item form-group">
-                              	{!! Form::label('name', trans("admin/users.name"), array('class' => 'control-label col-md-3 col-sm-3 col-xs-12')) !!}
+                              	{!! Form::label('category', trans("admin/systemsettings.category"), array('class' => 'control-label col-md-3 col-sm-3 col-xs-12')) !!}
                               	<div class="col-md-6 col-sm-6 col-xs-12">
-                              	{!! Form::text('name', null, array('class' => 'form-control col-md-7 col-xs-12', 'required'=>'required')) !!}
+                              	{!! Form::text('category', null, array('class' => 'form-control col-md-7 col-xs-12', 'required'=>'required')) !!}
                               	</div>
                               </div>
                               <div class="item form-group">
-                              	{!! Form::label('handle', trans("admin/users.handle"), array('class' => 'control-label col-md-3 col-sm-3 col-xs-12')) !!}
+                              	{!! Form::label('settings', trans("admin/systemsettings.settings"), array('class' => 'control-label col-md-3 col-sm-3 col-xs-12')) !!}
                               	<div class="col-md-6 col-sm-6 col-xs-12">
-                              	{!! Form::text('handle', null, array('class' => 'form-control col-md-7 col-xs-12', 'required'=>'required')) !!}
+                              	{!! Form::textarea('settings', null, array('class' => 'form-control col-md-7 col-xs-12', 'required'=>'required')) !!}
                               	</div>
                               </div>
                               <div class="ln_solid"></div>

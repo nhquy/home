@@ -70,7 +70,7 @@
                   </li>
                   <li>
                   	<a>
-                  		<i class="fa fa-edit"></i> Users
+                  		<i class="fa fa-user"></i> Users
                   		<span class="fa fa-chevron-down"></span>
                   	</a>
                     <ul class="nav child_menu">
@@ -79,11 +79,20 @@
                   </li>
                   <li>
                   	<a>
-                  		<i class="fa fa-edit"></i> User Groups
+                  		<i class="fa fa-users"></i> User Groups
                   		<span class="fa fa-chevron-down"></span>
                   	</a>
                     <ul class="nav child_menu">
                       <li><a href="{{ url('/admin/usergroup/') }}">User Groups Manager</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                  	<a>
+                  		<i class="fa fa-wrench"></i> System Settings
+                  		<span class="fa fa-chevron-down"></span>
+                  	</a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{ url('/admin/systemsettings/') }}">System Settings Manager</a></li>
                     </ul>
                   </li>
                   <li>

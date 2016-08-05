@@ -14,6 +14,7 @@
 /****************   Model binding into route **************************/
 Route::model('user', 'App\User');
 Route::model('usergroup', 'App\UserGroup');
+Route::model('systemsettings', 'App\SystemSettings');
 Route::pattern('id', '[0-9]+');
 Route::pattern('slug', '[0-9a-z-_]+');
 Route::pattern('uuid', '[0-9a-z-_]+');
@@ -44,6 +45,13 @@ Route::group(['namespace' => 'Admin', /*'middleware' => ['auth'], */'prefix' => 
 	Route::get('usergroup/{usergroup}/delete', 'UserGroupController@delete');
 	//Route::post('usergroup/{usergroup}/store', 'UserGroupController@store');
 	Route::resource('usergroup', 'UserGroupController');
+	
+	# System Settings 
+	Route::get('systemsettings/data', 'SystemSettingsController@data');
+	Route::get('systemsettings/{systemsettings}/show', 'SystemSettingsController@show');
+	Route::get('systemsettings/{systemsettings}/edit', 'SystemSettingsController@edit');
+	Route::get('systemsettings/{systemsettings}/delete', 'SystemSettingsController@delete');
+	Route::resource('systemsettings', 'SystemSettingsController');
 
 	//Route::get('user/{user}/show', 'UserController@show');
 	/*Route::resource('user', 'UserController', ['parameters' => [

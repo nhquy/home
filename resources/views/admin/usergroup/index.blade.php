@@ -45,7 +45,7 @@
 	                  </div>
 
 	                  <div class="x_content">
-						<a href="{{ url('/admin/usergroup/create') }}" class="btn btn-app">
+						<a href="{{ url('/admin/'.$type.'/create') }}" class="btn btn-app">
 	                      <i class="fa fa-plus-circle"></i>
 	                      Create
 	                    </a>

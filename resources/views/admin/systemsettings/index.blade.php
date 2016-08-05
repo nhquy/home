@@ -6,7 +6,7 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>User Groups Manager</h3>
+                <h3>System Settings Manager</h3>
               </div>
               <div class="title_right">
                 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
@@ -45,30 +45,27 @@
 	                  </div>
 
 	                  <div class="x_content">
-						    {!! Form::open(array('url' => url('admin/'.$type), 'method' => 'POST', 'class' => 'form-horizontal form-label-left', 'files'=> true)) !!}
-                              <span class="section">User Group Info</span>
-                              <div class="item form-group">
-                              	{!! Form::label('name', trans("admin/users.name"), array('class' => 'control-label col-md-3 col-sm-3 col-xs-12')) !!}
-                              	<div class="col-md-6 col-sm-6 col-xs-12">
-                              	{!! Form::text('name', null, array('class' => 'form-control col-md-7 col-xs-12', 'required'=>'required')) !!}
-                              	</div>
-                              </div>
-                              <div class="item form-group">
-                              	{!! Form::label('handle', trans("admin/users.handle"), array('class' => 'control-label col-md-3 col-sm-3 col-xs-12')) !!}
-                              	<div class="col-md-6 col-sm-6 col-xs-12">
-                              	{!! Form::text('handle', null, array('class' => 'form-control col-md-7 col-xs-12', 'required'=>'required')) !!}
-                              	</div>
-                              </div>
-                              <div class="ln_solid"></div>
-		                      <div class="form-group">
-		                        <div class="col-md-6 col-md-offset-3">
-		                          <button type="submit" class="btn btn-primary">Cancel</button>
-		                          <button id="send" type="submit" class="btn btn-success">Submit</button>
-		                        </div>
-		                      </div>
-                            {!! Form::close() !!}
-	                	</div>
-                 	</div>
+						<a href="{{ url('/admin/'.$type.'/create') }}" class="btn btn-app">
+	                      <i class="fa fa-plus-circle"></i>
+	                      Create
+	                    </a>
+	                    <!-- <p>Add class <code>bulk_action</code> to table for bulk actions options on row select</p>-->
+
+	                    <div class="table-responsive">
+							<table id="table-main" class="table table-bordered">
+							  <thead>
+							    <th>Category</th>
+							    <th>Settings</th>
+							    <th data-dynatable-read="created_at">Created At</th>
+							    <th data-dynatable-read="updated_at" >Updated At</th>
+							    <th data-dynatable-read="action">Action</th>
+							  </thead>
+							  <tbody>
+							  </tbody>
+							</table>
+	                    </div>
+	                </div>
+                 </div>
               	</div>
               </div>
             </div>
