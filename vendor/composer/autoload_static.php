@@ -72,6 +72,7 @@ class ComposerStaticInit34b49339985721a96533b1a96ec028d4
         'L' => 
         array (
             'League\\Flysystem\\' => 17,
+            'Laracasts\\Generators\\' => 21,
         ),
         'I' => 
         array (
@@ -225,6 +226,10 @@ class ComposerStaticInit34b49339985721a96533b1a96ec028d4
         array (
             0 => __DIR__ . '/..' . '/league/flysystem/src',
         ),
+        'Laracasts\\Generators\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/laracasts/generators/src',
+        ),
         'Illuminate\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/framework/src/Illuminate',
@@ -318,8 +323,11 @@ class ComposerStaticInit34b49339985721a96533b1a96ec028d4
 
     public static $classMap = array (
         'CreateContentsTable' => __DIR__ . '/../..' . '/database/migrations/2016_07_15_101757_create_contents_table.php',
+        'CreateGroupPermissionPivotTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_08_065238_create_group_permission_pivot_table.php',
+        'CreateGroupsTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_08_035757_create_groups_table.php',
         'CreateLocalesTable' => __DIR__ . '/../..' . '/database/migrations/2016_07_15_102031_create_locales_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
+        'CreatePermissionsTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_08_030734_create_permissions_table.php',
         'CreateSystemSettingsTable' => __DIR__ . '/../..' . '/database/migrations/2016_07_18_015802_create_system_settings_table.php',
         'CreateUserGroupsTable' => __DIR__ . '/../..' . '/database/migrations/2016_07_15_083020_create_user_groups_table.php',
         'CreateUserPermissionsTable' => __DIR__ . '/../..' . '/database/migrations/2016_07_15_083535_create_user_permissions_table.php',

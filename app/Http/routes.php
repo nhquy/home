@@ -18,6 +18,9 @@ Route::model('systemsettings', 'App\SystemSettings');
 Route::model('userpermissions', 'App\UserPermissions');
 Route::model('content', 'App\Content');
 Route::model('locales', 'App\Locales');
+Route::model('permissions', 'App\Permissions');
+Route::model('group', 'App\Groups');
+Route::model('groupspermissions', 'App\GroupsPermissions');
 Route::pattern('id', '[0-9]+');
 Route::pattern('slug', '[0-9a-z-_]+');
 Route::pattern('uuid', '[0-9a-z-_]+');
@@ -76,7 +79,27 @@ Route::group(['namespace' => 'Admin', /*'middleware' => ['auth'], */'prefix' => 
 	Route::get('content/{content}/edit', 'ContentController@edit');
 	Route::get('content/{content}/delete', 'ContentController@delete');
 	Route::resource('content', 'ContentController');
+	
+	# Permissions 
+	Route::get('permissions/data', 'PermissionController@data');
+	Route::get('permissions/{permissions}/show', 'PermissionController@show');
+	Route::get('permissions/{permissions}/edit', 'PermissionController@edit');
+	Route::get('permissions/{permissions}/delete', 'PermissionController@delete');
+	Route::resource('permissions', 'PermissionController');
+	
+	# Groups
+	Route::get('group/data', 'GroupController@data');
+	Route::get('group/{group}/show', 'GroupController@show');
+	Route::get('group/{group}/edit', 'GroupController@edit');
+	Route::get('group/{group}/delete', 'GroupController@delete');
+	Route::resource('group', 'GroupController');
 
+	# Groups Permissions 
+	Route::get('groupspermissions/data', 'GroupPermissionController@data');
+	Route::get('groupspermissions/{groupspermissions}/show', 'GroupPermissionController@show');
+	Route::get('groupspermissions/{groupspermissions}/edit', 'GroupPermissionController@edit');
+	Route::get('groupspermissions/{groupspermissions}/delete', 'GroupPermissionController@delete');
+	Route::resource('groupspermissions', 'GroupPermissionController');
 	//Route::get('user/{user}/show', 'UserController@show');
 	/*Route::resource('user', 'UserController', ['parameters' => [
     	'user' => 'uuid'

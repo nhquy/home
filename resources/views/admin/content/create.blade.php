@@ -62,7 +62,7 @@
                               <div class="item form-group">
                               	{!! Form::label('field_body', trans("admin/content.field_body"), array('class' => 'control-label col-md-3 col-sm-3 col-xs-12')) !!}
                               	<div class="col-md-6 col-sm-6 col-xs-12">
-                              	{!! Form::text('field_body', null, array('class' => 'form-control col-md-7 col-xs-12', 'required'=>'required')) !!}
+                              	{!! Form::textarea('field_body', null, array('class' => 'form-control col-md-7 col-xs-12', 'required'=>'required')) !!}
                               	</div>
                               </div>
                               <div class="ln_solid"></div>

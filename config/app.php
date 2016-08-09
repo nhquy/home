@@ -159,6 +159,7 @@ return [
     	//Ifnot\Dynatable\Dynatable::class,
     	WhiteFrame\WhiteFrame\WhiteFrameServiceProvider::class,
     	Collective\Html\HtmlServiceProvider::class,
+    	Laracasts\Generators\GeneratorsServiceProvider::class,
 
     ],
 

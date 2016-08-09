@@ -7,8 +7,11 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'CreateContentsTable' => $baseDir . '/database/migrations/2016_07_15_101757_create_contents_table.php',
+    'CreateGroupPermissionPivotTable' => $baseDir . '/database/migrations/2016_08_08_065238_create_group_permission_pivot_table.php',
+    'CreateGroupsTable' => $baseDir . '/database/migrations/2016_08_08_035757_create_groups_table.php',
     'CreateLocalesTable' => $baseDir . '/database/migrations/2016_07_15_102031_create_locales_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
+    'CreatePermissionsTable' => $baseDir . '/database/migrations/2016_08_08_030734_create_permissions_table.php',
     'CreateSystemSettingsTable' => $baseDir . '/database/migrations/2016_07_18_015802_create_system_settings_table.php',
     'CreateUserGroupsTable' => $baseDir . '/database/migrations/2016_07_15_083020_create_user_groups_table.php',
     'CreateUserPermissionsTable' => $baseDir . '/database/migrations/2016_07_15_083535_create_user_permissions_table.php',

@@ -115,6 +115,33 @@
                   </li>
                   <li>
                   	<a>
+                  		<i class="fa fa-users"></i> Permissions
+                  		<span class="fa fa-chevron-down"></span>
+                  	</a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{ url('/admin/permissions/') }}">Permissions Manager</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                  	<a>
+                  		<i class="fa fa-users"></i> Groups
+                  		<span class="fa fa-chevron-down"></span>
+                  	</a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{ url('/admin/group/') }}">Groups Manager</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                  	<a>
+                  		<i class="fa fa-users"></i> GroupsPermissions 
+                  		<span class="fa fa-chevron-down"></span>
+                  	</a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{ url('/admin/groupspermissions/') }}">GroupsPermissions Manager</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                  	<a>
                   		<i class="fa fa-wrench"></i> System Settings
                   		<span class="fa fa-chevron-down"></span>
                   	</a>
