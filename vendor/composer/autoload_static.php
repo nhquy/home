@@ -15,9 +15,10 @@ class ComposerStaticInit34b49339985721a96533b1a96ec028d4
         'e23faeee409e941dc9b4c80386209c39' => __DIR__ . '/..' . '/laracasts/flash/src/Laracasts/Flash/functions.php',
         'e7223560d890eab89cda23685e711e2c' => __DIR__ . '/..' . '/psy/psysh/src/Psy/functions.php',
         '5255c38a0faeba867671b61dfda6d864' => __DIR__ . '/..' . '/paragonie/random_compat/lib/random.php',
+        'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
+        'f18cc91337d49233e5754e93f3ed9ec3' => __DIR__ . '/..' . '/laravelcollective/html/src/helpers.php',
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
-        'f18cc91337d49233e5754e93f3ed9ec3' => __DIR__ . '/..' . '/laravelcollective/html/src/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -62,6 +63,7 @@ class ComposerStaticInit34b49339985721a96533b1a96ec028d4
         'P' => 
         array (
             'Psy\\' => 4,
+            'Psr\\Http\\Message\\' => 17,
             'Pingpong\\Widget\\' => 16,
             'PhpParser\\' => 10,
         ),
@@ -76,7 +78,12 @@ class ComposerStaticInit34b49339985721a96533b1a96ec028d4
         ),
         'I' => 
         array (
+            'Intervention\\Image\\' => 19,
             'Illuminate\\' => 11,
+        ),
+        'G' => 
+        array (
+            'GuzzleHttp\\Psr7\\' => 16,
         ),
         'F' => 
         array (
@@ -210,6 +217,10 @@ class ComposerStaticInit34b49339985721a96533b1a96ec028d4
         array (
             0 => __DIR__ . '/..' . '/psy/psysh/src/Psy',
         ),
+        'Psr\\Http\\Message\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/http-message/src',
+        ),
         'Pingpong\\Widget\\' => 
         array (
             0 => __DIR__ . '/..' . '/pingpong/widget',
@@ -230,9 +241,17 @@ class ComposerStaticInit34b49339985721a96533b1a96ec028d4
         array (
             0 => __DIR__ . '/..' . '/laracasts/generators/src',
         ),
+        'Intervention\\Image\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/intervention/image/src/Intervention/Image',
+        ),
         'Illuminate\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/framework/src/Illuminate',
+        ),
+        'GuzzleHttp\\Psr7\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
         ),
         'Faker\\' => 
         array (
@@ -323,7 +342,8 @@ class ComposerStaticInit34b49339985721a96533b1a96ec028d4
 
     public static $classMap = array (
         'CreateContentsTable' => __DIR__ . '/../..' . '/database/migrations/2016_07_15_101757_create_contents_table.php',
-        'CreateGroupPermissionPivotTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_08_065238_create_group_permission_pivot_table.php',
+        'CreateGroupPermissionPivotTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_08_071648_create_group_permission_pivot_table.php',
+        'CreateGroupsPermissionsTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_08_071534_create_groups_permissions_table.php',
         'CreateGroupsTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_08_035757_create_groups_table.php',
         'CreateLocalesTable' => __DIR__ . '/../..' . '/database/migrations/2016_07_15_102031_create_locales_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',

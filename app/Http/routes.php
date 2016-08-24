@@ -21,13 +21,17 @@ Route::model('locales', 'App\Locales');
 Route::model('permissions', 'App\Permissions');
 Route::model('group', 'App\Groups');
 Route::model('groupspermissions', 'App\GroupsPermissions');
+Route::model('media', 'App\Media');
 Route::pattern('id', '[0-9]+');
 Route::pattern('slug', '[0-9a-z-_]+');
 Route::pattern('uuid', '[0-9a-z-_]+');
 
+/*
 Route::get('/', function () {
     return view('welcome');
-});
+});*/
+ 
+Route::get('/', 'HomeController@index');
 
 Route::group(['namespace' => 'Admin', /*'middleware' => ['auth'], */'prefix' => 'admin'], function () {
 	//Dashboard Route
@@ -100,6 +104,13 @@ Route::group(['namespace' => 'Admin', /*'middleware' => ['auth'], */'prefix' => 
 	Route::get('groupspermissions/{groupspermissions}/edit', 'GroupPermissionController@edit');
 	Route::get('groupspermissions/{groupspermissions}/delete', 'GroupPermissionController@delete');
 	Route::resource('groupspermissions', 'GroupPermissionController');
+	
+	# Media 
+	Route::get('media/data', 'MediaController@data');
+	Route::get('media/{media}/show', 'MediaController@show');
+	Route::get('media/{media}/edit', 'MediaController@edit');
+	Route::get('media/{media}/delete', 'MediaController@delete');
+	Route::resource('media', 'MediaController');
 	//Route::get('user/{user}/show', 'UserController@show');
 	/*Route::resource('user', 'UserController', ['parameters' => [
     	'user' => 'uuid'

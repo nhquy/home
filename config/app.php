@@ -160,6 +160,8 @@ return [
     	WhiteFrame\WhiteFrame\WhiteFrameServiceProvider::class,
     	Collective\Html\HtmlServiceProvider::class,
     	Laracasts\Generators\GeneratorsServiceProvider::class,
+    		
+    	Intervention\Image\ImageServiceProvider::class,
 
     ],
 
@@ -211,6 +213,7 @@ return [
     	'Form' => Collective\Html\FormFacade::class,
     	'Html' => Collective\Html\HtmlFacade::class,
     	// ...
+    	'Image'     => Intervention\Image\Facades\Image::class
     ],
 
 ];

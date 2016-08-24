@@ -9,7 +9,9 @@
         "laravel/framework": "5.2.*",
         "white-frame/white-frame": "5.2.*",
         "white-frame/dynatable": "*",
-        "laravelcollective/html": "5.2.*"
+        "laravelcollective/html": "5.2.*",
+        "enyo/dropzone": "*",
+        "intervention/image": "*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

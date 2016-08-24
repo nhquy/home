@@ -18,9 +18,11 @@
     <link href="{{ asset('lib/nprogress/nprogress.css') }}" rel="stylesheet">
     <!-- jQuery Dynatable -->
     <link href="{{ asset('lib/jquery-dynatable/jquery.dynatable.css') }}" rel="stylesheet">
-     <!-- jQuery Dynatable -->
     <script src="{{ asset('lib/jquery-dynatable/jquery.dynatable.js') }}"></script>
-
+	<!-- Dropzone  -->
+	<link href="{{ asset('lib/dropzone/basic.css') }}" rel="stylesheet">
+	<script src="{{ asset('lib/dropzone/dropzone.js') }}"></script>
+	
     <!-- Custom Theme Style -->
     <link href="{{ asset('css/admin/style.css') }}" rel="stylesheet">
 </head>
@@ -147,6 +149,15 @@
                   	</a>
                     <ul class="nav child_menu">
                       <li><a href="{{ url('/admin/systemsettings/') }}">System Settings Manager</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                  	<a>
+                  		<i class="fa fa-wrench"></i> Media Manager 
+                  		<span class="fa fa-chevron-down"></span>
+                  	</a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{ url('/admin/media/') }}">Media Manager</a></li>
                     </ul>
                   </li>
                   <li>
