@@ -22,6 +22,8 @@ Route::model('permissions', 'App\Permissions');
 Route::model('group', 'App\Groups');
 Route::model('groupspermissions', 'App\GroupsPermissions');
 Route::model('media', 'App\Media');
+Route::model('categories', 'App\Category');
+Route::model('menu', 'App\Menu');
 Route::pattern('id', '[0-9]+');
 Route::pattern('slug', '[0-9a-z-_]+');
 Route::pattern('uuid', '[0-9a-z-_]+');
@@ -35,10 +37,14 @@ Route::get('/', 'HomeController@index');
 
 Route::group(['namespace' => 'Admin', /*'middleware' => ['auth'], */'prefix' => 'admin'], function () {
 	//Dashboard Route
-	Route::get('/', function() {
+	/*Route::get('/', function() {
 		return view('admin.index');
-	});
+	});*/
 
+	Route::get('/', array(
+				'as'    => 'user',
+				'uses'  => 'UserController@index'
+	));
 	//Route::get('/', array('as' => 'admin', 'uses' => 'LoginController@index'));
 
 	# Users
@@ -111,6 +117,20 @@ Route::group(['namespace' => 'Admin', /*'middleware' => ['auth'], */'prefix' => 
 	Route::get('media/{media}/edit', 'MediaController@edit');
 	Route::get('media/{media}/delete', 'MediaController@delete');
 	Route::resource('media', 'MediaController');
+	
+	# Menu
+	Route::get('menu/data', 'MenuController@data');
+	Route::get('menu/{menu}/show', 'MenuController@show');
+	Route::get('menu/{menu}/edit', 'MenuController@edit');
+	Route::get('menu/{menu}/delete', 'MenuController@delete');
+	Route::resource('menu', 'MenuController');
+	
+	# Cateogries
+	Route::get('categories/data', 'CategoryController@data');
+	Route::get('categories/{categories}/show', 'CategoryController@show');
+	Route::get('categories/{categories}/edit', 'CategoryController@edit');
+	Route::get('categories/{categories}/delete', 'CategoryController@delete');
+	Route::resource('categories', 'CategoryController');
 	//Route::get('user/{user}/show', 'UserController@show');
 	/*Route::resource('user', 'UserController', ['parameters' => [
     	'user' => 'uuid'

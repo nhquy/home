@@ -6,7 +6,7 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Users Manager</h3>
+                <h3>Category Manager</h3>
               </div>
               <div class="title_right">
                 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
@@ -45,36 +45,24 @@
 	                  </div>
 
 	                  <div class="x_content">
-						    {!! Form::open(array('url' => url('admin/'.$type), 'method' => 'post', 'class' => 'form-horizontal form-label-left', 'files'=> true)) !!}
-                              <span class="section">Personal Info</span>
+						    {!! Form::model($categories, array('url' => url('admin/'.$type) . '/' . $categories->id, 'method' => 'put','id'=>'fupload', 'class' => 'form-horizontal form-label-left', 'files'=> true)) !!}
+                        	<span class="section">Category Info</span>
                               <div class="item form-group">
-                              	{!! Form::label('name', trans("admin/users.name"), array('class' => 'control-label col-md-3 col-sm-3 col-xs-12')) !!}
+                              	{!! Form::label('title', trans("admin/menu.title"), array('class' => 'control-label col-md-3 col-sm-3 col-xs-12')) !!}
                               	<div class="col-md-6 col-sm-6 col-xs-12">
-                              	{!! Form::text('name', null, array('class' => 'form-control col-md-7 col-xs-12', 'required'=>'required')) !!}
+                              	{!! Form::text('title', null, array('class' => 'form-control col-md-7 col-xs-12', 'required'=>'required')) !!}
                               	</div>
                               </div>
                               <div class="item form-group">
-                              	{!! Form::label('username', trans("admin/users.username"), array('class' => 'control-label col-md-3 col-sm-3 col-xs-12')) !!}
+                              	{!! Form::label('alias', trans("admin/menu.alias"), array('class' => 'control-label col-md-3 col-sm-3 col-xs-12')) !!}
                               	<div class="col-md-6 col-sm-6 col-xs-12">
-                              	{!! Form::text('username', null, array('class' => 'form-control col-md-7 col-xs-12', 'required'=>'required')) !!}
+                              	{!! Form::text('alias', null, array('class' => 'form-control col-md-7 col-xs-12', 'required'=>'required')) !!}
                               	</div>
                               </div>
                               <div class="item form-group">
-                              	{!! Form::label('email', trans("admin/users.email"), array('class' => 'control-label col-md-3 col-sm-3 col-xs-12')) !!}
+                              	{!! Form::label('note', trans("admin/menu.note"), array('class' => 'control-label col-md-3 col-sm-3 col-xs-12')) !!}
                               	<div class="col-md-6 col-sm-6 col-xs-12">
-                              	{!! Form::text('email', null, array('class' => 'form-control col-md-7 col-xs-12', 'required'=>'required')) !!}
-                              	</div>
-                              </div>
-                              <div class="item form-group">
-                              	{!! Form::label('password', trans("admin/users.password"), array('class' => 'control-label col-md-3 col-sm-3 col-xs-12')) !!}
-                              	<div class="col-md-6 col-sm-6 col-xs-12">
-                              	{!! Form::password('password', array('class' => 'form-control col-md-7 col-xs-12', 'required'=>'required')) !!}
-                              	</div>
-                              </div>
-                              <div class="item form-group">
-                              	{!! Form::label('password_confirmation', trans("admin/users.password_confirmation"), array('class' => 'control-label col-md-3 col-sm-3 col-xs-12')) !!}
-                              	<div class="col-md-6 col-sm-6 col-xs-12">
-                              	{!! Form::password('password_confirmation', array('class' => 'form-control col-md-7 col-xs-12', 'required'=>'required')) !!}
+                              	{!! Form::textarea('note', null, array('class' => 'form-control col-md-7 col-xs-12', 'required'=>'required')) !!}
                               	</div>
                               </div>
                               <div class="ln_solid"></div>

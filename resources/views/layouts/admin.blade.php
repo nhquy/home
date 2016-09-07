@@ -162,6 +162,24 @@
                   </li>
                   <li>
                   	<a>
+                  		<i class="fa fa-wrench"></i> Menu Manager 
+                  		<span class="fa fa-chevron-down"></span>
+                  	</a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{ url('/admin/menu/') }}">Menu Manager</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                  	<a>
+                  		<i class="fa fa-wrench"></i> Categories Manager 
+                  		<span class="fa fa-chevron-down"></span>
+                  	</a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{ url('/admin/categories/') }}">Categories Manager</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                  	<a>
                   		<i class="fa fa-desktop"></i> UI Elements
                   		<span class="fa fa-chevron-down"></span>
                   	</a>
