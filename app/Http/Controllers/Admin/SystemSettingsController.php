@@ -17,7 +17,7 @@ class SystemSettingsController extends Controller
 	{
 		view()->share('type', 'systemsettings');
 	}
-	
+
 	/*
 	 * Display a listing of the resource.
 	 *
@@ -26,7 +26,9 @@ class SystemSettingsController extends Controller
 	public function index()
 	{
 		// Show the page
-		return view('admin.systemsettings.index');
+		// Get fluent collection of what you want to show in dynatable
+		$systemSettings = SystemSettings::all()->toArray();;
+		return view('admin.systemsettings.index', array('systemSettings'=>$systemSettings));
 	}
 	/**
 	 * Show the form for creating a new resource.
@@ -81,11 +83,13 @@ class SystemSettingsController extends Controller
 	{
 		// Get fluent collection of what you want to show in dynatable
 		$systemSettings = SystemSettings::query();
-	
+
 		$columns = ['id', 'category','settings', 'created_at', 'updated_at', 'uuid'];
-	
+
 		// Build dynatable response
 		$result = Dynatable::of($systemSettings, $columns, $request->all());
-		return $result->make();
+		$json = $result->make();
+		$settings = $json['records'][0]['settings'];
+		return $json;
 	}
 }

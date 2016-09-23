@@ -43,27 +43,48 @@
 	                    </ul>
 	                    <div class="clearfix"></div>
 	                  </div>
-
 	                  <div class="x_content">
-						<a href="{{ url('/admin/'.$type.'/create') }}" class="btn btn-app">
-	                      <i class="fa fa-plus-circle"></i>
-	                      Create
-	                    </a>
-	                    <!-- <p>Add class <code>bulk_action</code> to table for bulk actions options on row select</p>-->
-
-	                    <div class="table-responsive">
-							<table id="table-main" class="table table-bordered">
-							  <thead>
-							    <th>Category</th>
-							    <th>Settings</th>
-							    <th data-dynatable-read="created_at">Created At</th>
-							    <th data-dynatable-read="updated_at" >Updated At</th>
-							    <th data-dynatable-read="action">Action</th>
-							  </thead>
-							  <tbody>
-							  </tbody>
-							</table>
-	                    </div>
+                      {!! Form::open(array('url' => url('admin/'.$type), 'method' => 'POST', 'class' => 'form-horizontal form-label-left', 'files'=> true)) !!}
+                        <span class="section">System Settings Info</span>
+                        <div class="item form-group">
+                          {!! Form::label('category', trans("admin/systemsettings.category"), array('class' => 'control-label col-md-3 col-sm-3 col-xs-12')) !!}
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                            {!! Form::text('category', null, array('class' => 'form-control col-md-7 col-xs-12', 'required'=>'required')) !!}
+                          </div>
+                          <a href="#" class="btn btn-primary">Add Category</a>
+                        </div>
+                        <div class="item form-group">
+                          <div class="col-md-12 col-sm-12 col-xs-12">
+                        		<div class="x_panel">
+                                <div class="x_content">
+                                  <div class="item form-group">
+                                    <div class="col-md-3 col-sm-3 col-xs-6">
+                                      {!! Form::label('name', trans("admin/systemsettings.name"), array('class' => 'control-label col-md-3 col-sm-3 col-xs-12')) !!}
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-6">
+                                      {!! Form::label('value', trans("admin/systemsettings.value"), array('class' => 'control-label col-md-3 col-sm-3 col-xs-12')) !!}
+                                    </div>
+                                  </div>
+                                  <div class="item form-group">
+                                    <div class="col-md-3 col-sm-3 col-xs-6">
+                                      {!! Form::text('name', null, array('class' => 'form-control col-md-7 col-xs-12', 'required'=>'required')) !!}
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-6">
+                                      {!! Form::text('value', null, array('class' => 'form-control col-md-7 col-xs-12', 'required'=>'required')) !!}
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="ln_solid"></div>
+      		                <div class="form-group">
+      		                    <div class="col-md-6 col-md-offset-3">
+      		                        <button type="submit" class="btn btn-primary">Cancel</button>
+      		                        <button id="send" type="submit" class="btn btn-success">Submit</button>
+      		                    </div>
+      		                </div>
+                      {!! Form::close() !!}
 	                </div>
                  </div>
               	</div>
