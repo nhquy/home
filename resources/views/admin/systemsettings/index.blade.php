@@ -51,30 +51,94 @@
                           <div class="col-md-6 col-sm-6 col-xs-12">
                             {!! Form::text('category', null, array('class' => 'form-control col-md-7 col-xs-12', 'required'=>'required')) !!}
                           </div>
-                          <a href="#" class="btn btn-primary">Add Category</a>
+                          <!--<a href="#" class="btn btn-primary">Add Category</a>-->
+                          <button id="scategory" type="submit" class="btn btn-success">Add Category</button>
                         </div>
+                      {!! Form::close() !!}
+                      {!! Form::open(array('url' => url('admin/'.$type), 'method' => 'POST', 'class' => 'form-horizontal form-label-left', 'files'=> true)) !!}
                         <div class="item form-group">
                           <div class="col-md-12 col-sm-12 col-xs-12">
                         		<div class="x_panel">
-                                <div class="x_content">
-                                  <div class="item form-group">
-                                    <div class="col-md-3 col-sm-3 col-xs-6">
-                                      {!! Form::label('name', trans("admin/systemsettings.name"), array('class' => 'control-label col-md-3 col-sm-3 col-xs-12')) !!}
-                                    </div>
-                                    <div class="col-md-3 col-sm-3 col-xs-6">
-                                      {!! Form::label('value', trans("admin/systemsettings.value"), array('class' => 'control-label col-md-3 col-sm-3 col-xs-12')) !!}
-                                    </div>
-                                  </div>
-                                  <div class="item form-group">
-                                    <div class="col-md-3 col-sm-3 col-xs-6">
-                                      {!! Form::text('name', null, array('class' => 'form-control col-md-7 col-xs-12', 'required'=>'required')) !!}
-                                    </div>
-                                    <div class="col-md-3 col-sm-3 col-xs-6">
-                                      {!! Form::text('value', null, array('class' => 'form-control col-md-7 col-xs-12', 'required'=>'required')) !!}
-                                    </div>
-                                  </div>
-                                </div>
-                            </div>
+	                                <div class="x_content">
+	                                	<div class="col-xs-3">
+					                      <!-- required for floating -->
+					                      <!-- Nav tabs -->
+					                      <ul class="nav nav-tabs tabs-left">
+                                  @foreach ($systemSettings as $systemSetting)
+                                      <li>
+                                        <a href="#{{ $systemSetting->category }}" data-toggle="tab">{{ ucfirst($systemSetting->category) }}</a>
+                                      </li>
+                                  @endforeach
+					                        </li>
+					                      </ul>
+					                    </div>
+					                    <div class="col-xs-9">
+					                      <!-- Tab panes -->
+					                      <div class="tab-content">
+                                  @foreach ($systemSettings as $systemSetting)
+
+                                    <div class="tab-pane active" id="{{ $systemSetting->category }}">
+					                          <p class="lead">Home tab</p>
+					                          <!-- <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher
+					                            synth. Cosby sweater eu banh mi, qui irure terr.</p>-->
+
+					                          <div class="item form-group">
+			                                    <div class="col-md-6 col-sm-6 col-xs-6">
+			                                      {!! Form::label('name', trans("admin/systemsettings.property_name"), array('class' => 'control-label col-md-3 col-sm-3 col-xs-12')) !!}
+			                                    </div>
+			                                    <div class="col-md-6 col-sm-6 col-xs-6">
+			                                      {!! Form::label('value', trans("admin/systemsettings.property_value"), array('class' => 'control-label col-md-3 col-sm-3 col-xs-12')) !!}
+			                                    </div>
+			                                  </div>
+			                                  <div class="item form-group">
+                                          {{ Form::hidden('uuid', $systemSetting->uuid, array('id' => '')) }}
+			                                  	<input name="category" value="{{$systemSetting->category}}" type="hidden">
+                                          @php
+                                            $settings = json_decode($systemSetting->settings, true);
+                                            foreach ($settings as $item=>$value){
+
+                                          @endphp
+                                          <div class="form-horizontal">
+                                            <div class="col-md-6 col-sm-6 col-xs-6 form-group">
+  			                                      {!! Form::text('name', $item, array('class' => 'form-control col-md-7 col-xs-12', 'required'=>'required')) !!}
+  			                                    </div>
+  			                                    <div class="col-md-6 col-sm-6 col-xs-6 form-group">
+  			                                      {!! Form::text('value', $value, array('class' => 'form-control col-md-7 col-xs-12', 'required'=>'required')) !!}
+  			                                    </div>
+                                          </div>
+                                          @php
+                                            }
+                                          @endphp
+			                                  </div>
+					                        </div>
+					                        <!--<div class="tab-pane" id="profile">Profile Tab.</div>
+					                        <div class="tab-pane" id="messages">Messages Tab.</div>
+					                        <div class="tab-pane" id="settings">Settings Tab.</div>-->
+                                  @endforeach
+					                      </div>
+					                    </div>
+					                    <div class="clearfix"></div>
+					                  </div>
+					                    <!--
+	                                  <div class="item form-group">
+	                                    <div class="col-md-3 col-sm-3 col-xs-6">
+	                                      {!! Form::label('name', trans("admin/systemsettings.name"), array('class' => 'control-label col-md-3 col-sm-3 col-xs-12')) !!}
+	                                    </div>
+	                                    <div class="col-md-3 col-sm-3 col-xs-6">
+	                                      {!! Form::label('value', trans("admin/systemsettings.value"), array('class' => 'control-label col-md-3 col-sm-3 col-xs-12')) !!}
+	                                    </div>
+	                                  </div>
+	                                  <div class="item form-group">
+	                                    <div class="col-md-3 col-sm-3 col-xs-6">
+	                                      {!! Form::text('name', null, array('class' => 'form-control col-md-7 col-xs-12', 'required'=>'required')) !!}
+	                                    </div>
+	                                    <div class="col-md-3 col-sm-3 col-xs-6">
+	                                      {!! Form::text('value', null, array('class' => 'form-control col-md-7 col-xs-12', 'required'=>'required')) !!}
+	                                    </div>
+	                                  </div>
+	                                </div>
+	                                -->
+                            	</div>
                           </div>
                         </div>
                         <div class="ln_solid"></div>

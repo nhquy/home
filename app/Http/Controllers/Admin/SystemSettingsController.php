@@ -27,7 +27,14 @@ class SystemSettingsController extends Controller
 	{
 		// Show the page
 		// Get fluent collection of what you want to show in dynatable
-		$systemSettings = SystemSettings::all()->toArray();;
+		$systemSettings = SystemSettings::all();//->toArray();
+		/*foreach ($systemSettings as $systemSetting){
+			$settings = json_decode($systemSetting->settings);
+			foreach ($settings as $item=>$value){
+				echo $value;
+			}
+		}
+		exit();*/
 		return view('admin.systemsettings.index', array('systemSettings'=>$systemSettings));
 	}
 	/**
