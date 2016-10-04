@@ -32,7 +32,7 @@ Route::pattern('uuid', '[0-9a-z-_]+');
 Route::get('/', function () {
     return view('welcome');
 });*/
- 
+
 Route::get('/', 'HomeController@index');
 
 Route::group(['namespace' => 'Admin', /*'middleware' => ['auth'], */'prefix' => 'admin'], function () {
@@ -61,42 +61,43 @@ Route::group(['namespace' => 'Admin', /*'middleware' => ['auth'], */'prefix' => 
 	Route::get('usergroup/{usergroup}/delete', 'UserGroupController@delete');
 	//Route::post('usergroup/{usergroup}/store', 'UserGroupController@store');
 	Route::resource('usergroup', 'UserGroupController');
-	
-	# System Settings 
+
+	# System Settings
 	Route::get('systemsettings/data', 'SystemSettingsController@data');
 	Route::get('systemsettings/{systemsettings}/show', 'SystemSettingsController@show');
 	Route::get('systemsettings/{systemsettings}/edit', 'SystemSettingsController@edit');
 	Route::get('systemsettings/{systemsettings}/delete', 'SystemSettingsController@delete');
+  Route::post('systemsettings/save', 'SystemSettingsController@save');
 	Route::resource('systemsettings', 'SystemSettingsController');
-	
-	# User Permissions 
+
+	# User Permissions
 	Route::get('userpermissions/data', 'UserPermissionsController@data');
 	Route::get('userpermissions/{userpermissions}/show', 'UserPermissionsController@show');
 	Route::get('userpermissions/{userpermissions}/edit', 'UserPermissionsController@edit');
 	Route::get('userpermissions/{userpermissions}/delete', 'UserPermissionsController@delete');
 	Route::resource('userpermissions', 'UserPermissionsController');
-	
+
 	# Locales
 	Route::get('locales/data', 'LocalesControler@data');
 	Route::get('locales/{locales}/show', 'LocalesControler@show');
 	Route::get('locales/{locales}/edit', 'LocalesControler@edit');
 	Route::get('locales/{locales}/delete', 'LocalesControler@delete');
 	Route::resource('locales', 'LocalesControler');
-	
+
 	# Contents
 	Route::get('content/data', 'ContentController@data');
 	Route::get('content/{content}/show', 'ContentController@show');
 	Route::get('content/{content}/edit', 'ContentController@edit');
 	Route::get('content/{content}/delete', 'ContentController@delete');
 	Route::resource('content', 'ContentController');
-	
-	# Permissions 
+
+	# Permissions
 	Route::get('permissions/data', 'PermissionController@data');
 	Route::get('permissions/{permissions}/show', 'PermissionController@show');
 	Route::get('permissions/{permissions}/edit', 'PermissionController@edit');
 	Route::get('permissions/{permissions}/delete', 'PermissionController@delete');
 	Route::resource('permissions', 'PermissionController');
-	
+
 	# Groups
 	Route::get('group/data', 'GroupController@data');
 	Route::get('group/{group}/show', 'GroupController@show');
@@ -104,27 +105,27 @@ Route::group(['namespace' => 'Admin', /*'middleware' => ['auth'], */'prefix' => 
 	Route::get('group/{group}/delete', 'GroupController@delete');
 	Route::resource('group', 'GroupController');
 
-	# Groups Permissions 
+	# Groups Permissions
 	Route::get('groupspermissions/data', 'GroupPermissionController@data');
 	Route::get('groupspermissions/{groupspermissions}/show', 'GroupPermissionController@show');
 	Route::get('groupspermissions/{groupspermissions}/edit', 'GroupPermissionController@edit');
 	Route::get('groupspermissions/{groupspermissions}/delete', 'GroupPermissionController@delete');
 	Route::resource('groupspermissions', 'GroupPermissionController');
-	
-	# Media 
+
+	# Media
 	Route::get('media/data', 'MediaController@data');
 	Route::get('media/{media}/show', 'MediaController@show');
 	Route::get('media/{media}/edit', 'MediaController@edit');
 	Route::get('media/{media}/delete', 'MediaController@delete');
 	Route::resource('media', 'MediaController');
-	
+
 	# Menu
 	Route::get('menu/data', 'MenuController@data');
 	Route::get('menu/{menu}/show', 'MenuController@show');
 	Route::get('menu/{menu}/edit', 'MenuController@edit');
 	Route::get('menu/{menu}/delete', 'MenuController@delete');
 	Route::resource('menu', 'MenuController');
-	
+
 	# Cateogries
 	Route::get('categories/data', 'CategoryController@data');
 	Route::get('categories/{categories}/show', 'CategoryController@show');

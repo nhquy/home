@@ -68,6 +68,15 @@ class SystemSettingsController extends Controller
 		$systemSettings->save();
 		return redirect("/admin/systemsettings");
 	}
+	public function save(Request $request)
+	{
+		$input = $array = array_except($request->all(), array('_token'));
+		//dd($input);
+		foreach ($input as $item=>$value){
+			dd($value);
+		}
+		exit();
+	}
 	/**
 	 * Update the specified resource in storage.
 	 *
