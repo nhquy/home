@@ -65,17 +65,25 @@ class SystemSettingsController extends Controller
 	{
 		$request->request->add(['uuid'=>Uuid::uuid()]);
 		$systemSettings = SystemSettings::create($request->all());
-		$systemSettings->save();
+		$systemSettings->update();
 		return redirect("/admin/systemsettings");
 	}
 	public function save(Request $request)
 	{
 		$input = $array = array_except($request->all(), array('_token'));
-		//dd($input);
+		$result = array();
 		foreach ($input as $item=>$value){
-			dd($value);
+			$result[$item]['uuid']=$value['uuid'];
+			$result[$item]['category']=$value['category'];
+			foreach ($value['name'] as $index=>$name){
+					$result[$item]['settings'][$name]=$value['value'][$index];
+			}
+			$systemSetting = SystemSettings::where('uuid','=', $value['uuid'])->first();
+			$systemSetting->uuid = Uuid::uuid();
+			$systemSetting->category = $result[$item]['category'];
+			$systemSetting->settings = json_encode($result[$item]['settings']);
+			$systemSetting->save();
 		}
-		exit();
 	}
 	/**
 	 * Update the specified resource in storage.

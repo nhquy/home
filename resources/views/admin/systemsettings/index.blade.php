@@ -96,10 +96,10 @@
                                           {{ Form::hidden($category.'[uuid]', $systemSetting->uuid, array('id' => '')) }}
 			                                  	<input name="{{$category}}[category]" value="{{$systemSetting->category}}" type="hidden">
                                           @php
-                                            $settings = json_decode($systemSetting->settings, true);
-                                            $j=0;
-                                            foreach ($settings as $item=>$value){
-
+                                            if(!empty($systemSetting->settings)){
+                                              $settings = json_decode($systemSetting->settings, true);
+                                              $j=0;
+                                              foreach ($settings as $item=>$value){
                                           @endphp
                                           <div class="form-horizontal">
                                             <div class="col-md-6 col-sm-6 col-xs-6 form-group">
@@ -110,8 +110,20 @@
   			                                    </div>
                                           </div>
                                           @php
-                                            $j++;
-                                            }
+                                                $j++;
+                                              }
+                                            }else{
+                                          @endphp
+                                          <div class="form-horizontal">
+                                            <div class="col-md-6 col-sm-6 col-xs-6 form-group">
+                                              {!! Form::text($category.'[name][0]', '', array('class' => 'form-control col-md-7 col-xs-12', 'required'=>'required')) !!}
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-6 form-group">
+                                              {!! Form::text($category.'[value][0]', '', array('class' => 'form-control col-md-7 col-xs-12', 'required'=>'required')) !!}
+                                            </div>
+                                          </div>
+                                          @php
+                                              }
                                           @endphp
 			                                </div>
 					                        </div>
