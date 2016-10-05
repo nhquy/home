@@ -66,7 +66,7 @@
 					                      <ul class="nav nav-tabs tabs-left">
                                   @foreach ($systemSettings as $systemSetting)
                                       <li>
-                                        <a href="#{{ $systemSetting->category }}" data-toggle="tab">{{ ucfirst($systemSetting->category) }}</a>
+                                        <a href="#{{ $systemSetting->category }}" data-href="{{ $systemSetting->category }}" data-toggle="tab" class="tab-category">{{ ucfirst($systemSetting->category) }}</a>
                                       </li>
                                   @endforeach
 					                        </li>
@@ -75,6 +75,9 @@
 					                    <div class="col-xs-9">
 					                      <!-- Tab panes -->
 					                      <div class="tab-content">
+                                    <div class="buttons">
+                                      <a class="btn btn-default btn-xs add-properties">Add properties</a>
+                                    </div>
                                   @foreach ($systemSettings as $systemSetting)
                                     <div class="tab-pane active" id="{{ $systemSetting->category }}">
 					                          <!--<p class="lead">Home tab</p>-->
@@ -103,10 +106,10 @@
                                           @endphp
                                           <div class="form-horizontal">
                                             <div class="col-md-6 col-sm-6 col-xs-6 form-group">
-  			                                      {!! Form::text($category.'[name]['.$j.']', $item, array('class' => 'form-control col-md-7 col-xs-12', 'required'=>'required')) !!}
+  			                                      {!! Form::text($category.'[name]['.$j.']', $item, array('class' => 'form-control col-md-7 col-xs-12 item-properties-name', 'required'=>'required')) !!}
   			                                    </div>
   			                                    <div class="col-md-6 col-sm-6 col-xs-6 form-group">
-  			                                      {!! Form::text($category.'[value]['.$j.']', $value, array('class' => 'form-control col-md-7 col-xs-12', 'required'=>'required')) !!}
+  			                                      {!! Form::text($category.'[value]['.$j.']', $value, array('class' => 'form-control col-md-7 col-xs-12 item-properties-value', 'required'=>'required')) !!}
   			                                    </div>
                                           </div>
                                           @php
@@ -116,10 +119,10 @@
                                           @endphp
                                           <div class="form-horizontal">
                                             <div class="col-md-6 col-sm-6 col-xs-6 form-group">
-                                              {!! Form::text($category.'[name][0]', '', array('class' => 'form-control col-md-7 col-xs-12', 'required'=>'required')) !!}
+                                              {!! Form::text($category.'[name][0]', '', array('class' => 'form-control col-md-7 col-xs-12 item-properties-name', 'required'=>'required')) !!}
                                             </div>
                                             <div class="col-md-6 col-sm-6 col-xs-6 form-group">
-                                              {!! Form::text($category.'[value][0]', '', array('class' => 'form-control col-md-7 col-xs-12', 'required'=>'required')) !!}
+                                              {!! Form::text($category.'[value][0]', '', array('class' => 'form-control col-md-7 col-xs-12 item-properties-value', 'required'=>'required')) !!}
                                             </div>
                                           </div>
                                           @php
