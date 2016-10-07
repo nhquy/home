@@ -65,7 +65,13 @@
 					                      <!-- Nav tabs -->
 					                      <ul class="nav nav-tabs tabs-left">
                                   @foreach ($systemSettings as $systemSetting)
+                                    @php
+                                      
+                                    @endphp
+                                      <li class="active">
+                                    @php
                                       <li>
+                                    @endphp
                                         <a href="#{{ $systemSetting->category }}" data-href="{{ $systemSetting->category }}" data-toggle="tab" class="tab-category">{{ ucfirst($systemSetting->category) }}</a>
                                       </li>
                                   @endforeach
@@ -79,38 +85,46 @@
                                       <a class="btn btn-default btn-xs add-properties">Add properties</a>
                                     </div>
                                   @foreach ($systemSettings as $systemSetting)
-                                    <div class="tab-pane active" id="{{ $systemSetting->category }}">
+                                    <div class="tab-pane" id="{{ $systemSetting->category }}">
 					                          <!--<p class="lead">Home tab</p>-->
 					                          <!-- <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher
 					                            synth. Cosby sweater eu banh mi, qui irure terr.</p>-->
 
 					                              <div class="item form-group">
-			                                    <div class="col-md-6 col-sm-6 col-xs-6">
+			                                    <div class="col-md-4 col-sm-4 col-xs-4">
 			                                      {!! Form::label('name', trans("admin/systemsettings.property_name"), array('class' => 'control-label col-md-3 col-sm-3 col-xs-12')) !!}
 			                                    </div>
-			                                    <div class="col-md-6 col-sm-6 col-xs-6">
+			                                    <div class="col-md-4 col-sm-4 col-xs-4">
 			                                      {!! Form::label('value', trans("admin/systemsettings.property_value"), array('class' => 'control-label col-md-3 col-sm-3 col-xs-12')) !!}
 			                                    </div>
+                                          <div class="col-md-4 col-sm-4 col-xs-4">
+                                            {!! Form::label('name', trans("admin/systemsettings.action"), array('class' => 'control-label col-md-3 col-sm-3 col-xs-12')) !!}
+                                          </div>
 			                                  </div>
                                         @php
                                           $category = $systemSetting->category;
                                         @endphp
 			                                  <div class="item form-group">
                                           {{ Form::hidden($category.'[uuid]', $systemSetting->uuid, array('id' => '')) }}
-			                                  	<input name="{{$category}}[category]" value="{{$systemSetting->category}}" type="hidden">
-                                          @php
+			                                  	@php
                                             if(!empty($systemSetting->settings)){
                                               $settings = json_decode($systemSetting->settings, true);
                                               $j=0;
                                               foreach ($settings as $item=>$value){
                                           @endphp
                                           <div class="form-horizontal">
-                                            <div class="col-md-6 col-sm-6 col-xs-6 form-group">
+                                            <div class="col-md-4 col-sm-4 col-xs-4 form-group">
   			                                      {!! Form::text($category.'[name]['.$j.']', $item, array('class' => 'form-control col-md-7 col-xs-12 item-properties-name', 'required'=>'required')) !!}
   			                                    </div>
-  			                                    <div class="col-md-6 col-sm-6 col-xs-6 form-group">
+  			                                    <div class="col-md-4 col-sm-4 col-xs-4 form-group">
   			                                      {!! Form::text($category.'[value]['.$j.']', $value, array('class' => 'form-control col-md-7 col-xs-12 item-properties-value', 'required'=>'required')) !!}
   			                                    </div>
+                                            <div class="col-md-4 col-sm-4 col-xs-4 form-group">
+                                              <div class="btn-group">
+                                                <a class="btn btn-default">Save</a>
+                                                <a class="btn btn-default">Delete</a>
+                                              </div>
+                                            </div>
                                           </div>
                                           @php
                                                 $j++;
@@ -118,16 +132,23 @@
                                             }else{
                                           @endphp
                                           <div class="form-horizontal">
-                                            <div class="col-md-6 col-sm-6 col-xs-6 form-group">
+                                            <div class="col-md-4 col-sm-4 col-xs-4 form-group">
                                               {!! Form::text($category.'[name][0]', '', array('class' => 'form-control col-md-7 col-xs-12 item-properties-name', 'required'=>'required')) !!}
                                             </div>
-                                            <div class="col-md-6 col-sm-6 col-xs-6 form-group">
+                                            <div class="col-md-4 col-sm-4 col-xs-4 form-group">
                                               {!! Form::text($category.'[value][0]', '', array('class' => 'form-control col-md-7 col-xs-12 item-properties-value', 'required'=>'required')) !!}
+                                            </div>
+                                            <div class="col-md-4 col-sm-4 col-xs-4 form-group">
+                                              <div class="btn-group">
+                                                <a class="btn btn-default">Save</a>
+                                                <a class="btn btn-default">Delete</a>
+                                              </div>
                                             </div>
                                           </div>
                                           @php
                                               }
                                           @endphp
+                                          <input name="{{$category}}[category]" value="{{$systemSetting->category}}" type="hidden">
 			                                </div>
 					                        </div>
 					                        <!--<div class="tab-pane" id="profile">Profile Tab.</div>

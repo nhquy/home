@@ -84,6 +84,7 @@ class SystemSettingsController extends Controller
 			$systemSetting->settings = json_encode($result[$item]['settings']);
 			$systemSetting->save();
 		}
+		return redirect("/admin/systemsettings");
 	}
 	/**
 	 * Update the specified resource in storage.

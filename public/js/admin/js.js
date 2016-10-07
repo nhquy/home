@@ -12,15 +12,21 @@ $(document).ready(function() {
       count = count;
       console.log("Count of input "+count);
       var html = '<div class="form-horizontal">'
-                  +'<div class="col-md-6 col-sm-6 col-xs-6 form-group">'
-                  +'<input class="form-control col-md-7 col-xs-12 item-properties-name" required="required" name="'+category+'[name]['+count+']" value="" type="text">'
+                  +'<div class="col-md-4 col-sm-4 col-xs-4 form-group">'
+                    +'<input class="form-control col-md-7 col-xs-12 item-properties-name" required="required" name="'+category+'[name]['+count+']" value="" type="text">'
                   +'</div>'
-                  +'<div class="col-md-6 col-sm-6 col-xs-6 form-group">'
-                  +'<input class="form-control col-md-7 col-xs-12 item-properties-value" required="required" name="'+category+'[value]['+count+']" value="" type="text">'
+                  +'<div class="col-md-4 col-sm-4 col-xs-4 form-group">'
+                    +'<input class="form-control col-md-7 col-xs-12 item-properties-value" required="required" name="'+category+'[value]['+count+']" value="" type="text">'
+                  +'</div>'
+                  +'<div class="col-md-4 col-sm-4 col-xs-4 form-group">'
+                    +'<div class="btn-group">'
+                      +'<a class="btn btn-default">Save</a>'
+                      +'<a class="btn btn-default">Delete</a>'
+                    +'</div>'
                   +'</div>'
                 +'</div>'
       console.log(html);
-      $("input[name='"+category+"[category]']").after(html);
+      $("input[name='"+category+"[category]']").before(html);
       /*.each(function(){
         console.log($(this).length());
       });*/
